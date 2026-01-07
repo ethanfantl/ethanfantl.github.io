@@ -52,12 +52,12 @@ jobs:
 
       - name: Test site
         run: |
-          bundle exec htmlproofer _site \
+          bundle exec htmlproofer \
             --disable-external \
-            --ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/" \
+            --ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/,/fonts\.googleapis\.com/,/fonts\.gstatic\.com/,/cdn\.jsdelivr\.net/" \
             --swap-urls "https?://ethanfantl.github.io: ,ethanfantl.github.io: " \
-            --enforce-https false \
-            --allow-hash-href
+            --allow-hash-href \
+            ./_site
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
